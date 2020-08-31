@@ -1,1 +1,12 @@
+# Workshop 1: Across Translation Units
+
+In this workshop, I implement aspects of linkage, storage duration, namespaces, guards, and operating system interfaces.
+
+## Learning Outcomes
+
+- declare a local variable that remains in memory for the lifetime of the program
+- guard a class definition from repetition
+- access a variable defined in a different translation unit
+- receive program arguments from the command line
+- upgrade code to accept and manage a user-defined string of any length
 
