@@ -1,0 +1,91 @@
+# Workshop 2: Move and Copy Semantics
+
+In this workshop, I worked with a large dynamically allocated array of C++ Standard Library strings and compare the performance of copy and move operations on that collection.
+
+## Learning Outcomes
+- retrieve records from a text file using an input file stream  object
+- count the number of records in a text file
+- monitor the time spent on a particular task using the `std::chrono` library
+- implement **copy semantics** for a class with a resource
+- implement **move semantics** for a class with a resource
+- identify the processing-intensive operations in copy and move assignments
+
+## *Lab*
+
+This workshop consists of three modules:
+- `w2` (supplied)
+- `TimedEvents`
+- `Text`
+
+### `w2` Module (supplied)
+
+### `TimedEvents` Module
+Manages a **statically** allocated array of record objects.  The class predefines the maximum number of record objects at 7.
+
+### `Text` Module
+Manages a **dynamically** allocated array of `std::string`s. The class keeps track of the number of strings currently stored.
+
+### Sample Output
+
+When the program is started with the command:
+```
+w2.exe gutenberg_shakespeare
+```
+the output should look like:
+```
+Command Line:
+--------------------------
+  1: w2.exe
+  2: gutenberg_shakespeare
+--------------------------
+
+  0-arg Constructor - a.size =       0 records
+  1-arg Constructor - b.size = 1293934 records
+  Copy Constructor  - c.size = 1293934 records
+  Copy Assignment   - a.size = 1293934 records
+
+--------------------------
+Execution Times:
+--------------------------
+  0-arg Constructor           790 nanoseconds
+  1-arg Constructor    4377977955 nanoseconds
+  Copy Constructor     1976590065 nanoseconds
+  Copy Assignment      2004531426 nanoseconds
+  Destructor           3478640044 nanoseconds
+--------------------------
+
+## *Home*
+Upgraded the `Text` class to include a **move constructor** and a **move assignment operator**.
+
+### Sample Output
+
+When the program is started with the command:
+```
+w2.exe gutenberg_shakespeare
+```
+the output should look like:
+```
+Command Line:
+--------------------------
+  1: w2.exe
+  2: gutenberg_shakespeare
+--------------------------
+
+  0-arg Constructor - a.size =       0 records
+  1-arg Constructor - b.size = 1293934 records
+  Copy Constructor  - c.size = 1293934 records
+  Copy Assignment   - a.size = 1293934 records
+  Move Constructor  - d.size = 1293934 records
+  Move Assignment   - a.size = 1293934 records
+
+--------------------------
+Execution Times:
+--------------------------
+  0-arg Constructor           790 nanoseconds
+  1-arg Constructor    4010433846 nanoseconds
+  Copy Constructor     2002725409 nanoseconds
+  Copy Assignment      1926967415 nanoseconds
+  Move Constructor            790 nanoseconds
+  Move Assignment             394 nanoseconds
+  Destructor           3538222832 nanoseconds
+--------------------------
