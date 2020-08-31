@@ -10,3 +10,35 @@ In this workshop, I implement aspects of linkage, storage duration, namespaces, 
 - receive program arguments from the command line
 - upgrade code to accept and manage a user-defined string of any length
 
+## *Lab*
+
+This workshop consists of three modules:
+- `w1` (partially supplied)
+- `process` (supplied)
+- `String`
+
+### `w1` Module (partially supplied)
+Finished the implementation of the `main` function, by completing the parts marked with `TODO`:
+
+- write the prototype of the `main` function to receive a set of standard command line arguments
+- echoes the set of arguments to standard output in the following format:
+```
+1: first argument
+2: second argument
+3: third argument
+4: ...
+```
+
+### `process` Module
+The implementation file defines a single function named `process()` that receives the address of an unmodifiable C-style null terminated string, constructs a `String` object from the C-style string and inserts that object into standard output followed by a newline.
+
+### `String` Module
+Defines a class named `String` that holds a C-style null-terminated string of up to 3 characters *excluding the null byte terminator*
+### Sample Output
+
+When the program is started with the command:
+```
+w1.exe Welcome to C++!
+```
+the output should look like:
+
