@@ -1,0 +1,110 @@
+# Workshop 1: Across Translation Units
+
+In this workshop, I implement aspects of linkage, storage duration, namespaces, guards, and operating system interfaces.
+
+## Learning Outcomes
+
+- declare a local variable that remains in memory for the lifetime of the program
+- guard a class definition from repetition
+- access a variable defined in a different translation unit
+- receive program arguments from the command line
+- upgrade code to accept and manage a user-defined string of any length
+
+## *Lab*
+
+This workshop consists of three modules:
+- `w1` (partially supplied)
+- `process` (supplied)
+- `String`
+
+### `w1` Module (partially supplied)
+Finished the implementation of the `main` function, by completing the parts marked with `TODO`:
+
+- write the prototype of the `main` function to receive a set of standard command line arguments
+- echoes the set of arguments to standard output in the following format:
+```
+1: first argument
+2: second argument
+3: third argument
+4: ...
+```
+
+### `process` Module
+The implementation file defines a single function named `process()` that receives the address of an unmodifiable C-style null terminated string, constructs a `String` object from the C-style string and inserts that object into standard output followed by a newline.
+
+### `String` Module
+Defines a class named `String` that holds a C-style null-terminated string of up to 3 characters *excluding the null byte terminator*
+### Sample Output
+
+When the program is started with the command:
+```
+w1.exe Welcome to C++!
+```
+the output should look like:
+```
+Command Line:
+1: w1.exe
+2: Welcome
+3: to
+4: C++!
+
+------------------
+Global variable:
+------------------
+Old Value: 3
+New Value: 4
+------------------
+
+------------------
+Processing:
+------------------
+1: Wel
+2: to
+3: C++
+------------------
+
+## *Home*
+Upgraded the `String` class to manage a C-style null-terminated string of any length.  When a new instance is created, the custom constructor should accept at most `g_maxSize` characters (excluding the null terminator).
+### Sample Output
+
+When the program is started with the command:
+```
+w1.exe Welcome to C++!
+```
+the output should look like:
+```
+Command Line:
+1: w1.exe
+2: Welcome
+3: to
+4: C++!
+
+------------------
+Global variable:
+------------------
+Old Value: 3
+New Value: 4
+------------------
+
+------------------
+First processing:
+------------------
+1: Welc
+2: to
+3: C++!
+------------------
+
+------------------
+Second processing:
+------------------
+4: Welco
+5: to
+6: C++!
+------------------
+
+Welcome
+Welcome
+School of Software Design and Data Science
+7: Welcome
+8: Welcome
+9: Welcome
