@@ -1,0 +1,9 @@
+﻿OOP345 - Reflection Workshop 2 - Move and Copy Semantics
+Student: Marcelle Polla
+Student #: 126654185
+Email: mpolla1@myseneca.ca
+Date: Sep 22nd, 2019
+
+
+* the reason for the significant time difference between the copy and move operations
+For this workshop we worked with the chronus library to time how long it took to count the number of records in a file and also to copy these records to other instances of the same class. The at home part allowed for a time comparison between using copy constructor and assignment operator, and move constructor and move assignment operator. Move constructors and move assignments are faster because they are a way of moving resources from one instance to another, instead of making a copy, which is a more complex operation. When a copy is made, you end up with two instances having the same information; when a move assignment is used, on the other hand, the information from one instance is moved to another without having to deallocate and allocate resources unnecessarily.
