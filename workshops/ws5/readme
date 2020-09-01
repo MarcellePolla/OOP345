@@ -1,0 +1,88 @@
+# Workshop 5: Functions and Error Handling
+
+In this workshop, I coded a function object, a lambda expression, and exception handling.
+
+I created a template class that manages a collection of objects of type `T`. The client of this class will be able to register a callback function (an observer) that will be called every time a new item has been added successfully.
+
+I used a collection of books and another collection of movies, both loaded from files. The information about books/movies contains mistakes:
+- Created a lambda expression that fixes the price information about a book
+- Created a function object (functor) that fixes some spelling mistakes in the description and titles for books/movies.
+
+Generated and handled exceptions
+- the functor will load the misspelled words from a file, but if the file is missing, and exception is generated.
+- iterating over the collection using indices, generates an exception if the index is not valid.
+
+## Learning Outcomes
+- design and code a templated class that allocates and deallocates dynamic memory
+- design and code a function object
+- design and code a lambda expression
+- code a member function that receives the address of another function to execute 
+- throw exceptions of different types
+- distinguish exception types
+
+## *Lab*
+
+The in-lab portion of this workshop consists of modules:
+- `w5` (partially supplied)
+- `Book`
+
+### `Book` Module
+
+This module defines a class that holds information about a single book.
+
+### `w5` Module (partially supplied)
+
+### Sample Output
+
+When the program is started with the command (the file `book.txt` is provided):
+```
+w5.exe book.txt
+```
+the output should look like the one from the `sample_output.txt` file.
+
+ 
+## *Home*
+
+Includes more modules:
+- `Movie`
+- `SpellChecker`
+- `Collection`
+
+### `SpellChecker` Module (functor)
+
+This module maintains two arrays of strings, both of size 5 (statically allocated):
+- `m_badWords`: an array with 5 misspelled words
+- `m_goodWords`: an array with the correct spelling of those 5 words
+
+### `Book` Module
+
+Added to the `Book` class a public template function:
+- `void fixSpelling(T spellChecker)`: this function calls the overloaded `operator()` on instance `spellChecker`, passing to it the book description.
+
+  In this design, type `T` must have an overload of the `operator()` that accepts a string as a parameter.
+
+### `Movie` Module
+Designed and coded a class named `Movie` that stores the following information:
+
+- **title**
+- **the year of release**
+- **the description**
+
+### `Collection` Module
+
+The purpose of this class is to manage a collection items of template type `T`.
+This module manages a **dynamically allocated** array of objects of type `T`, resizing it when a new item is added. 
+Using a callback function, this class informs the client when a new item has been added to the collection.
+The class collection provides two overloads for `operator[]` to access the stored item. 
+
+### Sample Output
+
+When the program is started with the command (the files are provided):
+```
+w5.exe books.txt movies.txt missing_file.txt words.txt
+```
+the output should look like the one from the `sample_output.txt` file.
+
+
+
+
