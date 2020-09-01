@@ -1,0 +1,152 @@
+# Workshop 6: STL Containers
+
+In this workshop, I stored polymorphic objects in an STL container.
+I created an application that simulates an autoshop that sells various types of vehicles.  
+For this specific application focuses on **cars** and **racecars**.
+
+## Learning Outcomes
+
+- manage polymorphic objects using the vector container of the STL
+- move a dynamically allocated object into a container
+- code a range-based iteration on the objects in a container
+- report and handle an exception
+
+## *Lab*
+
+Consists of modules:
+- `w6` (supplied)
+- `Vehicle` (supplied)
+- `Car`
+- `Autoshop`
+- `Utilities`
+
+### `Car` Module
+
+This module defines a class that holds information about a single car.
+
+### `Autoshop` module
+
+This module defines a class that holds information about an autoshop that sells various types of vehicles.
+
+### `Utilities` module
+
+This module contains a single function that creates instances on the `Vehicle` hierarchy.
+
+### `w6` Module (supplied)
+
+### Sample Output
+
+When the program is started with the command (the file `cars.txt` is provided):
+```
+w6.exe cars.txt
+```
+the output should look like the one from the `sample_output.txt` file.
+
+```
+Command Line:
+--------------------------
+  1: w6.exe
+  2: cars.txt
+--------------------------
+
+--------------------------------
+| Cars in the autoshop!        |
+--------------------------------
+|     Toyota | new    | 157.00 |
+|      Honda | broken | 145.00 |
+|   Chrysler | new    | 173.00 |
+--------------------------------
+
+## *Home*
+
+Includes one more module and updates some existing modules:
+- `Racecar`
+- `Car` (updated)
+- `Autoshop` (updated)
+- `Utilities` (updated)
+- `w6` (updated)
+
+### `Racecar` Module
+
+A `Racecar` is a `Car` that for a short period of time can boost its top speed by a certain percent (this class should inherit `Car`).
+
+### `Car` Module
+
+Updated to handle invalid records and generate exceptions when an invalid record is detected.
+
+### `Utilities` module
+
+Updated to build an instance of type `Racecar` if the first non-blank character extracted from the stream is `r` of `R`.
+
+If the first non-blank character is not `c`, `C`, `r`, or `R` this function generates an exception, informing the client that this record contains information about an unknown vehicle.
+
+If there is no more information to be extracted from the stream, this function returns `nullptr`.
+
+### `Autoshop` Module
+
+Updated to include two additional public functions, a destructor and a **template** function that iterates over the vehicles stored in the `m_vehicles`, and adds to the second parameter all vehicles for which the `test` is true.
+
+### `w6` Module (partially supplied)
+
+### Sample Output
+
+When the program is started with the command (the files are provided):
+```
+w6.exe dataClean.txt dataMessy.txt
+```
+the output should look like the one from the `sample_output.txt` file.
+
+```
+Command Line:
+--------------------------
+  1: w6.exe
+  2: dataClean.txt
+  3: dataMessy.txt
+--------------------------
+
+--------------------------------
+| Cars in the autoshop!        |
+--------------------------------
+|     Toyota | new    | 157.00 |
+|     Jaguar | used   | 295.20 |*
+|      Honda | broken | 145.00 |
+|     Porche | used   | 365.40 |*
+|   Chrysler | new    | 173.00 |
+--------------------------------
+
+Invalid record!
+Invalid record!
+Unrecognized record type: [t]
+--------------------------------
+| Cars in the autoshop!        |
+--------------------------------
+|     Toyota | new    | 157.00 |
+|     Jaguar | used   | 295.20 |*
+|      Honda | broken | 145.00 |
+|     Porche | used   | 365.40 |*
+|   Chrysler | new    | 173.00 |
+| Alfa Romeo | new    | 176.00 |
+|       Ford | new    | 162.00 |
+|   Red Bull | broken | 346.56 |*
+|    Ferrari | new    | 367.33 |*
+--------------------------------
+
+--------------------------------
+|       Fast Vehicles          |
+--------------------------------
+|     Porche | used   | 365.40 |*
+|   Red Bull | broken | 346.56 |*
+|    Ferrari | new    | 367.33 |*
+--------------------------------
+
+--------------------------------
+| Vehicles in need of repair   |
+--------------------------------
+|      Honda | broken | 145.00 |
+|   Red Bull | broken | 346.56 |*
+--------------------------------
+
+
+
+
+
