@@ -1,0 +1,65 @@
+# Workshop 8: Smart Pointers
+
+In this workshop, I merged two lists and used a smart pointer to ensure that memory is deallocated in the possible presence of an exception.
+
+
+## Learning Outcomes
+
+- create a program component of quadratic complexity
+- use a smart pointer to move an object
+
+## *Lab*
+
+Consists of modules:
+- `w8` (supplied)
+- `Element` 
+- `List` 
+- `Utilities` (supplied header)
+
+### `Element` Module
+
+The `Element` module holds product code, price and description information.
+
+### `List` Module
+
+The `List` module defines a class that retrieves a list of records stored in a text file, holds the elements in an STL vector, provides access to them by index and displays them to an output stream. 
+
+### `Utilities` Module
+
+Implemented the `mergeRaw()` function.  
+This function compares the elements in the two received lists for common product codes and builds the user-friendly list from the matching pairs.  
+For each successful comparison, the function allocates dynamic memory of `Product` type using that description and the price. 
+It then validates the `Product` object and adds it to its list. The function returns a copy of this list.
+
+### `w8` Module (supplied)
+
+### Sample Output
+
+
+When the program is started with the command (the input files are provided):
+```
+w8.exe Descriptions.dat BadPrices.dat Prices.dat
+```
+the output should look like the one from the `sample_output.txt` file.
+
+## *Home*
+
+Upgrades the solution to use smart pointers.
+
+- Adds an operator `+=` overload to the `List` module using smart pointer syntax
+- Completes the `mergeSmart()` function in the `Utilities` module using smart pointer syntax
+
+### `w8` Module (supplied)
+
+
+### Sample Output
+
+
+When the program is started with the command (the input files are provided):
+```
+w8.exe Descriptions.dat BadPrices.dat Prices.dat
+```
+the output should look like the one from the `sample_output.txt` file.
+
+
+
