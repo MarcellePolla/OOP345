@@ -1,0 +1,127 @@
+# Workshop 3: Templates
+
+In this workshop, I designed and coded a couple of class templates and test them on different instantiations.
+
+## Learning Outcomes
+
+- design and code a class template
+- template a class variable
+- specialize a class template for a particular type
+- instantiate a template class
+- specialize a member function of a class template to process a particular type
+- derivate a template class from another template class
+
+## *Lab*
+
+This workshop consists of three modules:
+- `w3` (supplied)
+- `List`
+- `LVPair`
+
+### `List` Module
+
+This module defines a class template for a collection of elements of any data type (for example, a list of `int`, or a list `Student`, etc.)
+
+### `LVPair` Module
+
+The template parameters identify the types of the label and value objects that constitute an `LVPair` object:
+- `L`: the type of the label
+- `V`: the type of the value
+
+### Sample Output
+
+When the program is started with the command (the file `sales.txt` is provided):
+```
+w3.exe sales.txt
+```
+the output should look like:
+```
+Command Line:
+--------------------------
+  1: w3.exe
+  2: sales.txt
+--------------------------
+
+Detail Ticket Sales
+--------------------------
+Student : 25
+Adult : 13
+Student : 12
+Adult : 6
+Student : 5
+Adult : 15
+```
+
+## *Home*
+Includes:
+- alignment of the label and value output in pretty columnar format
+- accumulation of the values stored in a `List`, for a specified label
+
+### `LVPair` Module
+
+Upgraded to include both summation and label alignment functionality.
+
+This class is derived from `LVPair<L, V>`, and receives 2 template parameters:
+- `L`: the type of the label
+- `V`: the type of the value
+
+### `List` Module
+Added to this module another **template** class called `LVList`, that can manage a collection of *summable* elements.
+
+This class is derived from `List<T, N>`, and receives 4 template parameters:
+- `L`: the type of a label
+- `V`: the type summation value
+- `T`: the type of any element in the collection
+- `N`: the maximum number of elements in the collection (an integer without sign)
+
+In this design, `summable` elements are objects of a type that supports the operation `V sum(const L& l, const V& v)`.
+
+### Sample Output
+
+When the program is started with the command:
+```
+w3.exe products.txt sales.txt
+```
+the output should look like:
+```
+Command Line:
+--------------------------
+  1: w3.exe
+  2: products.txt
+  3: sales.txt
+--------------------------
+
+Individual Index Entries
+--------------------------
+Grocerries  : tomatoes
+Electronics : computer
+Tools       : hammer
+Grocerries  : lettuce
+Grocerries  : potatoes
+Electronics : Multimedia_Player
+Electronics : HDD
+Grocerries  : meat
+Tools       : jigsaw
+
+Collated Index Entries
+--------------------------
+      Tools: hammer, jigsaw
+ Grocerries: tomatoes, lettuce, potatoes, meat
+ Electrnics:
+Electronics: computer, Multimedia_Player, HDD
+
+Detail Ticket Sales
+--------------------------
+Student : 25
+Adult   : 13
+Student : 12
+Adult   : 6
+Student : 5
+Adult   : 15
+
+Summary of Ticket Sales
+--------------------------
+Student Tickets =   86.10
+Adult Tickets   =  110.50
+```
+
